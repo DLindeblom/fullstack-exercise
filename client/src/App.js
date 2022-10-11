@@ -14,6 +14,30 @@ function App() {
          })
   }, [])
   
+  const oneEmployee = employees.map(employee => {
+    let assigned = ""
+    if(employee.assigned) {
+     assigned = "true"
+    }
+    else { 
+      assigned = "false"
+    }
+    return (
+      <tr key={employee.id}>
+        <td>{employee.id}</td>
+        <td>{employee.name}</td>
+        <td>{employee.code}</td>
+        <td>{employee.profession}</td>
+        <td>{employee.city}</td>
+        <td>{employee.branch}</td>
+        <td>{assigned}</td>
+        <td className="d-flex justify-content-between">
+          <Button className="btn btn-danger btn-sm">Delete</Button>
+          <Button className="btn btn-secondary btn-sm">Edit</Button>
+        </td>
+      </tr>
+    )
+  })
 
   return (
     <div className="vh-100" style={{ background: "linear-gradient(#e66465, #9198e5)" }}>
@@ -23,7 +47,7 @@ function App() {
           <Button>Add Employee</Button>
         </Stack>
         <Stack>
-          <Table bordered>
+          <Table bordered hover striped>
             <thead>
               <tr>
                 <th>ID</th>
@@ -32,15 +56,16 @@ function App() {
                 <th>Profession</th>
                 <th>City</th>
                 <th>Branch</th>
-                <th>Abacus</th>
                 <th>Assigned</th>
                 <th>Options</th>
               </tr>
             </thead>
+            <tbody>
+              {oneEmployee}
+            </tbody>
           </Table>
         </Stack>
       </Container>
-
     </div>
   );
 }
