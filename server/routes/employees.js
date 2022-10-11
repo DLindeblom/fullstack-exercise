@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const router = require('express').Router()
 
 module.exports = (db) => {
 
@@ -11,6 +11,21 @@ module.exports = (db) => {
         res.json(data.rows);
       })
   });
+
+  //add an employee
+  router.post('/', (req, res) => {
+    const queryString = `
+      INSERT INTO employees (name, code, profession, color, city, branch, assigned)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
+      `
+    
+    const queryParams = [req.body.name, req.body.code, req.body.profession, req.body.colour, req.body.city, req.body.branch, req.body.assigned]
+
+    db.query(queryString, queryParams)
+      .then(data => {
+        res.json(data)
+      })
+  })
 
   return router;
 }
