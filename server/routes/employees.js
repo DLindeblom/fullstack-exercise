@@ -1,9 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const router = require('express').Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+module.exports = (db) => {
 
-module.exports = router;
+  //get all employees
+  router.get('/', (req, res) => {
+    const queryString = 'SELECT * FROM employees';
+
+    db.query(queryString)
+      .then(data => {
+        res.json(data.rows);
+      })
+  });
+
+  return router;
+}
