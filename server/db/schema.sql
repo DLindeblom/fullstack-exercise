@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS employees;
+
+CREATE TABLE employees (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  code VARCHAR(255) NOT NULL,
+  profession VARCHAR(255) NOT NULL, 
+  color VARCHAR(10),
+  city VARCHAR(55),
+  branch VARCHAR (255),
+  assigned BOOLEAN DEFAULT FALSE NOT NULL
+);
