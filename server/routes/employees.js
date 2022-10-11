@@ -33,6 +33,28 @@ module.exports = (db) => {
       })
   });
 
+  //update employee information
+  router.put('/:id', cors(corsOptions), (req, res) => {
+    const queryString = `
+      UPDATE employees
+      SET name = $1,
+          code = $2,
+          profession = $3,
+          color = $4,
+          city = $5,
+          branch = $6,
+          assigned = $7
+      WHERE id = $8
+    `
+
+    const queryParams = [req.body.name, req.body.code, req.body.profession, req.body.colour, req.body.city, req.body.branch, req.body.assigned, req.params.id];
+
+    db.query(queryString, queryParams)
+      .then(data => {
+        res.json(data)
+      })
+  })
+
   //delete an employee
   router.delete('/:id', cors(corsOptions), (req, res) => {
     const queryString = `
