@@ -1,9 +1,15 @@
 const router = require('express').Router()
+const cors = require('cors')
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200
+}
 
 module.exports = (db) => {
 
   //get all employees
-  router.get('/', (req, res) => {
+  router.get('/', cors(corsOptions), (req, res) => {
     const queryString = 'SELECT * FROM employees';
 
     db.query(queryString)
@@ -13,7 +19,7 @@ module.exports = (db) => {
   });
 
   //add an employee
-  router.post('/', (req, res) => {
+  router.post('/', cors(corsOptions), (req, res) => {
     const queryString = `
       INSERT INTO employees (name, code, profession, color, city, branch, assigned)
       VALUES ($1, $2, $3, $4, $5, $6, $7)
@@ -25,10 +31,10 @@ module.exports = (db) => {
       .then(data => {
         res.json(data)
       })
-  })
+  });
 
   //delete an employee
-  router.delete('/:id', (req, res) => {
+  router.delete('/:id', cors(corsOptions), (req, res) => {
     const queryString = `
       DELETE FROM employees
       WHERE id = $1
@@ -40,6 +46,7 @@ module.exports = (db) => {
       .then(data => {
         res.json(data)
       })
-  })
+  });
+
   return router;
 }
