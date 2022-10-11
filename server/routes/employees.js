@@ -27,5 +27,19 @@ module.exports = (db) => {
       })
   })
 
+  //delete an employee
+  router.delete('/:id', (req, res) => {
+    const queryString = `
+      DELETE FROM employees
+      WHERE id = $1
+      `
+
+    const queryParams = [req.params.id]
+
+    db.query(queryString, queryParams)
+      .then(data => {
+        res.json(data)
+      })
+  })
   return router;
 }
