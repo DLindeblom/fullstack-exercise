@@ -1,12 +1,20 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Stack, Button, Table } from 'react-bootstrap';
+import axios from 'axios';
 
 function App() {
 
+  const [employees, setEmployees] = useState([])
+
   useEffect(() => {
     axios.get('/employees')
-  })
+         .then((res) => {
+          setEmployees(res.data)
+         })
+  }, [])
+  
+
   return (
     <div className="vh-100" style={{ background: "linear-gradient(#e66465, #9198e5)" }}>
       <Container >
