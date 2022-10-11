@@ -17,17 +17,19 @@ function App() {
   const oneEmployee = employees.map(employee => {
     let assigned = ""
     if(employee.assigned) {
-     assigned = "true"
+     assigned = "True"
     }
     else { 
-      assigned = "false"
+      assigned = "False"
     }
+
     return (
       <tr key={employee.id}>
         <td>{employee.id}</td>
         <td>{employee.name}</td>
         <td>{employee.code}</td>
         <td>{employee.profession}</td>
+        <td style={{"backgroundColor": employee.color}}></td>
         <td>{employee.city}</td>
         <td>{employee.branch}</td>
         <td>{assigned}</td>
@@ -40,7 +42,7 @@ function App() {
   })
 
   return (
-    <div className="vh-100" style={{ background: "linear-gradient(#e66465, #9198e5)" }}>
+    <div>
       <Container >
         <Stack direction="horizontal" gap="2" className="mb-4">
           <h1 className="me-auto mt-5">Plexxis Employees</h1>
@@ -54,6 +56,7 @@ function App() {
                 <th>Name</th>
                 <th>Code</th>
                 <th>Profession</th>
+                <th>Color</th>
                 <th>City</th>
                 <th>Branch</th>
                 <th>Assigned</th>
