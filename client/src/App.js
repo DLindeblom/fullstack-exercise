@@ -12,6 +12,8 @@ function App() {
 
   const { employees } = useEmployees();
 
+  //create an Employee component by looping through the employee array
+
   const oneEmployee = employees.map(employee => {
     let assigned = ""
     if(employee.assigned) {
@@ -34,8 +36,6 @@ function App() {
       />
     )
   })
-
-  // console.log(employees) 
 
   return (
     <div>
