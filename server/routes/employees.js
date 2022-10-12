@@ -47,7 +47,7 @@ module.exports = (db) => {
       WHERE id = $8
     `
 
-    const queryParams = [req.body.name, req.body.code, req.body.profession, req.body.colour, req.body.city, req.body.branch, req.body.assigned, req.params.id];
+    const queryParams = [req.body.name, req.body.code, req.body.profession, req.body.color, req.body.city, req.body.branch, req.body.assigned, req.params.id];
 
     db.query(queryString, queryParams)
       .then(data => {
