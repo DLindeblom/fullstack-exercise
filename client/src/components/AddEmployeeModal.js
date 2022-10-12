@@ -1,5 +1,6 @@
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useRef } from 'react';
+import { useEmployees } from '../hooks/useEmployees';
 
 
 export const AddEmployeeModal = ({ show, handleClose }) => {
@@ -12,24 +13,27 @@ export const AddEmployeeModal = ({ show, handleClose }) => {
   const branchRef = useRef();
   const assignedRef = useRef();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   addEmployee(
-  //     {
-  //       name: nameRef.current.value,
-  //       code: codeRef.current.value,
-  //       profession: professionRef.current.value,
-  //       color: colorRef.current.value,
-  //       city: cityRef.current.value,
-  //       branch: branchRef.current.value,
-  //       assigned: ""
-  //     }
-  //   )
-  // }
+  const { addEmployee } = useEmployees();
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addEmployee(
+      {
+        name: nameRef.current.value,
+        code: codeRef.current.value,
+        profession: professionRef.current.value,
+        color: colorRef.current.value,
+        city: cityRef.current.value,
+        branch: branchRef.current.value,
+        assigned: assignedRef.current.value
+      }
+    )
+    handleClose();
+  }
 
   return (
     <Modal show={show} onHide={handleClose}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Modal.Header closeButton>
           <Modal.Title>Add Employee</Modal.Title>
         </Modal.Header>
@@ -46,7 +50,7 @@ export const AddEmployeeModal = ({ show, handleClose }) => {
             <Form.Label>Profession</Form.Label>
             <Form.Control ref={professionRef} type="text" required />
           </Form.Group>
-          <Form.Group className="mb-3" selectId="color">
+          <Form.Group className="mb-3" selectid="color">
             <Form.Label>Color</Form.Label>
             <Form.Select ref={colorRef} required>
               <option>Select a Color</option>
@@ -67,7 +71,7 @@ export const AddEmployeeModal = ({ show, handleClose }) => {
             <Form.Label>Branch</Form.Label>
             <Form.Control ref={branchRef} type="text" required />
           </Form.Group>
-          <Form.Group className="mb-3" selectId="assigned">
+          <Form.Group className="mb-3" selectid="assigned">
             <Form.Label>Assigned</Form.Label>
             <Form.Select ref={assignedRef} required>
               <option>Choose an option</option>
