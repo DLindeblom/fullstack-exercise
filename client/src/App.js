@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Container, Stack, Button, Table } from 'react-bootstrap';
-import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AddEmployeeModal } from './components/AddEmployeeModal';
 import { useEmployees } from './hooks/useEmployees'
+import { Employee } from './components/Employee';
 
 function App() {
 
@@ -29,24 +29,21 @@ function App() {
     }
 
     return (
-      <tr key={employee.id}>
-        <td>{employee.id}</td>
-        <td>{employee.name}</td>
-        <td>{employee.code}</td>
-        <td>{employee.profession}</td>
-        <td style={{"backgroundColor": employee.color}}></td>
-        <td>{employee.city}</td>
-        <td>{employee.branch}</td>
-        <td>{assigned}</td>
-        <td className="d-flex justify-content-between">
-          <Button className="btn btn-danger btn-sm">Delete</Button>
-          <Button className="btn btn-secondary btn-sm">Edit</Button>
-        </td>
-      </tr>
+      <Employee
+        key={employee.id}
+        id={employee.id}
+        name={employee.name} 
+        code={employee.code}
+        profession={employee.profession}
+        color={employee.color}
+        city={employee.city}
+        branch={employee.branch}
+        assigned={assigned}
+      />
     )
   })
 
-  console.log(employees)
+  // console.log(employees) 
 
   return (
     <div>
