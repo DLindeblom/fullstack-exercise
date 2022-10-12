@@ -5,7 +5,7 @@ CREATE TABLE employees (
   name VARCHAR(255) NOT NULL,
   code VARCHAR(255) NOT NULL,
   profession VARCHAR(255) NOT NULL, 
-  color VARCHAR(10),
+  color VARCHAR(55) NOT NULL,
   city VARCHAR(55),
   branch VARCHAR (255),
   assigned BOOLEAN DEFAULT FALSE NOT NULL
