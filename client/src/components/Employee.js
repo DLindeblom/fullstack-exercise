@@ -15,21 +15,7 @@ export const Employee = ({
 }) => {
 
   const [showDeleteEmployeeModal, setShowDeleteEmployeeModal] = useState(false);
-  const [deleteEmployeeModalId, setDeleteEmployeeModalId] = useState();
-
   const [showEditEmployeeModal, setShowEditEmployeeModal] = useState(false);
-  const [editEmployeeModalId, setEditEmployeeModalId] = useState();
-
-
-  const openDeleteEmployeeModal = (id) => {
-    setShowDeleteEmployeeModal(true)
-    setDeleteEmployeeModalId(id)
-  }
-
-  const openEditEmployeeModal = (id) => {
-    setShowEditEmployeeModal(true)
-    setEditEmployeeModalId(id)
-  }
 
   return (
     <>
@@ -44,13 +30,13 @@ export const Employee = ({
         <td className="d-flex justify-content-between">
           <Button
             className="btn btn-danger btn-sm"
-            onClick={() => openDeleteEmployeeModal(id)}
+            onClick={() => setShowDeleteEmployeeModal(true)}
           >
             Delete
           </Button>
           <Button 
             className="btn btn-secondary btn-sm"
-            onClick={() => openEditEmployeeModal(id)}
+            onClick={() => setShowEditEmployeeModal(true)}
           >
             Edit
           </Button>
