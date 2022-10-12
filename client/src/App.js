@@ -4,18 +4,20 @@ import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AddEmployeeModal } from './components/AddEmployeeModal';
+import { useEmployees } from './hooks/useEmployees'
 
 function App() {
 
-  const [employees, setEmployees] = useState([])
   const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false)
 
-  useEffect(() => { //get employee array and set employees
-    axios.get('/employees')
-         .then((res) => {
-          setEmployees(res.data)
-         })
-  }, [])
+  const { employees } = useEmployees();
+
+  // useEffect(() => { //get employee array and set employees
+  //   axios.get('/employees')
+  //        .then((res) => {
+  //         setEmployees(res.data)
+  //        })
+  // }, [])
   
   const oneEmployee = employees.map(employee => {
     let assigned = ""
@@ -43,6 +45,8 @@ function App() {
       </tr>
     )
   })
+
+  console.log(employees)
 
   return (
     <div>
