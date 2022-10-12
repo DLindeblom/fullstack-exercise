@@ -67,7 +67,6 @@ export const EditEmployeeModal = ({
           <Form.Group className="mb-3" selectid="color">
             <Form.Label>Color</Form.Label>
             <Form.Select ref={colorRef} defaultValue={color} required>
-              <option>Select a Color</option>
               <option value="red">Red</option>
               <option value="yellow">Yellow</option>
               <option value="green">Green</option>
@@ -88,7 +87,6 @@ export const EditEmployeeModal = ({
           <Form.Group className="mb-3" selectid="assigned">
             <Form.Label>Assigned</Form.Label>
             <Form.Select ref={assignedRef} defaultValue={assigned} required>
-              <option>Choose an option</option>
               <option value="True">True</option>
               <option value="False">False</option>
             </Form.Select>
