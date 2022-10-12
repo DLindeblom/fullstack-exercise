@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { DeleteEmployeeModal } from './DeleteEmployeeModal';
+import { EditEmployeeModal } from './EditEmployeeModal';
 
 export const Employee = ({
   id,
@@ -16,9 +17,18 @@ export const Employee = ({
   const [showDeleteEmployeeModal, setShowDeleteEmployeeModal] = useState(false);
   const [deleteEmployeeModalId, setDeleteEmployeeModalId] = useState();
 
+  const [showEditEmployeeModal, setShowEditEmployeeModal] = useState(false);
+  const [editEmployeeModalId, setEditEmployeeModalId] = useState();
+
+
   const openDeleteEmployeeModal = (id) => {
     setShowDeleteEmployeeModal(true)
     setDeleteEmployeeModalId(id)
+  }
+
+  const openEditEmployeeModal = (id) => {
+    setShowEditEmployeeModal(true)
+    setEditEmployeeModalId(id)
   }
 
   return (
@@ -38,7 +48,12 @@ export const Employee = ({
           >
             Delete
           </Button>
-          <Button className="btn btn-secondary btn-sm">Edit</Button>
+          <Button 
+            className="btn btn-secondary btn-sm"
+            onClick={() => openEditEmployeeModal(id)}
+          >
+            Edit
+          </Button>
         </td>
       </tr>
 
@@ -47,6 +62,19 @@ export const Employee = ({
         handleClose={() => setShowDeleteEmployeeModal(false)}
         employeeId={id}
         employeeName={name}
+      />
+
+      <EditEmployeeModal
+        show={showEditEmployeeModal}
+        handleClose={() => setShowEditEmployeeModal(false)}
+        id={id}
+        name={name}
+        code={code}
+        profession={profession}
+        color={color}
+        city={city}
+        branch={branch}
+        assigned={assigned}
       />
     </>
   );
