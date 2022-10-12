@@ -15,12 +15,12 @@ function App() {
   //create an Employee component by looping through the employee array
 
   const oneEmployee = employees.map(employee => {
-    let assigned = ""
-    if(employee.assigned) {
-     assigned = "True"
-    } else { 
-      assigned = "False"
-    }
+    // let assigned = ""
+    // if(employee.assigned) {
+    //  assigned = "True"
+    // } else { 
+    //   assigned = "False"
+    // }
 
     return (
       <Employee
@@ -32,7 +32,7 @@ function App() {
         color={employee.color}
         city={employee.city}
         branch={employee.branch}
-        assigned={assigned}
+        assigned={employee.assigned}
       />
     )
   })

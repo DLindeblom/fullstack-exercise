@@ -55,7 +55,7 @@ export const AddEmployeeModal = ({ show, handleClose }) => {
           <Form.Group className="mb-3" selectid="color">
             <Form.Label>Color</Form.Label>
             <Form.Select ref={colorRef} required>
-              <option>Select a Color</option>
+              <option></option>
               <option value="red">Red</option>
               <option value="yellow">Yellow</option>
               <option value="green">Green</option>
@@ -76,7 +76,7 @@ export const AddEmployeeModal = ({ show, handleClose }) => {
           <Form.Group className="mb-3" selectid="assigned">
             <Form.Label>Assigned</Form.Label>
             <Form.Select ref={assignedRef} required>
-              <option>Choose an option</option>
+              <option></option>
               <option value="true">True</option>
               <option value="false">False</option>
             </Form.Select>
