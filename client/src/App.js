@@ -10,17 +10,10 @@ import { DeleteEmployeeModal } from './components/DeleteEmployeeModal';
 function App() {
 
   const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false);
-  const [showDeleteEmployeeModal, setShowDeleteEmployeeModal] = useState(false);
-  const [deleteEmployeeModalId, setDeleteEmployeeModalId] = useState();
+
 
   const { employees } = useEmployees();
 
-  const openDeleteEmployeeModal = (id) => {
-    setShowDeleteEmployeeModal(true)
-    setDeleteEmployeeModalId(id)
-  }
-
-  
   const oneEmployee = employees.map(employee => {
     let assigned = ""
     if(employee.assigned) {
@@ -40,7 +33,6 @@ function App() {
         city={employee.city}
         branch={employee.branch}
         assigned={assigned}
-        onDeleteEmployeeClick={() => openDeleteEmployeeModal(employee.id)}
       />
     )
   })
@@ -81,10 +73,6 @@ function App() {
         handleClose={() => setShowAddEmployeeModal(false)}
       />
 
-      <DeleteEmployeeModal
-        show={showDeleteEmployeeModal}
-        handleClose={() => setShowDeleteEmployeeModal(false)}
-      />
     </div>
   );
 }
