@@ -36,6 +36,7 @@ export const EmployeesProvider = ({ children }) => {
   function deleteEmployee(id) { //delete an employee
     axios.delete(`/employees/delete/${id}`)
       .then(() => {
+        //filter out the employee from the employees array whos id matches the id of the employee being deleted from the database
         setEmployees(prevEmployees => {
           return prevEmployees.filter(employee => employee.id !== id)
         })
@@ -47,14 +48,10 @@ export const EmployeesProvider = ({ children }) => {
     axios.put(`/employees/update/${id}`, {id, name, code, profession, color, city, branch, assigned})
     .then((res) => {
       if(res.status === 200) {
-        axios.get('/employees')
-        .then((res) => {
-          console.log(res.data)
-          setEmployees(res.data);
-        });
-        // setEmployees(prevEmployees => {
-        //   return [...prevEmployees, { id, name, code, profession, color, city, branch, assigned }]
-        // })
+        //filter out the existing entry with the old data, and spread the rest of the array and add the edited employee information to the employee array
+        setEmployees(prevEmployees => {
+          return [...prevEmployees.filter(employee => employee.id !== id), {id, name, code, profession, color, city, branch, assigned}]
+        })
       }
     })
   }

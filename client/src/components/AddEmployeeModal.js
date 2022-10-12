@@ -5,6 +5,7 @@ import { useEmployees } from '../contexts/EmployeesContext';
 
 export const AddEmployeeModal = ({ show, handleClose }) => {
 
+  //useRef hook used to track input values in form
   const nameRef = useRef();
   const codeRef = useRef();
   const professionRef = useRef();
@@ -13,6 +14,7 @@ export const AddEmployeeModal = ({ show, handleClose }) => {
   const branchRef = useRef();
   const assignedRef = useRef();
 
+  //import function from context hook
   const { addEmployee } = useEmployees();
 
   const handleSubmit = (e) => {

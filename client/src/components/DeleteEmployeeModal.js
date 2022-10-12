@@ -3,6 +3,7 @@ import { useEmployees } from '../contexts/EmployeesContext';
 
 export const DeleteEmployeeModal = ({ show, handleClose, employeeId, employeeName }) => {
 
+  //import function from context hook
   const { deleteEmployee } = useEmployees();
 
   return (
