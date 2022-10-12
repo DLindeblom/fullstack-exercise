@@ -3,7 +3,7 @@ import { Container, Stack, Button, Table } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AddEmployeeModal } from './components/AddEmployeeModal';
-import { useEmployees } from './hooks/useEmployees'
+import { useEmployees } from './contexts/EmployeesContext'
 import { Employee } from './components/Employee';
 
 function App() {
@@ -48,7 +48,6 @@ function App() {
           <Table bordered hover striped>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Code</th>
                 <th>Profession</th>
