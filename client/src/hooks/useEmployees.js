@@ -9,6 +9,7 @@ import axios from 'axios';
 //   return useContext(EmployeesContext);
 // };
 
+// custom hook to handle all the functionality
 export const useEmployees = () => {
 
   const [employees, setEmployees] = useState([])
@@ -25,6 +26,16 @@ export const useEmployees = () => {
          .then(res => console.log(res))
   };
 
+  function deleteEmployee({ id }) {
+    axios.delete(`/employees/delete/${id}`)
+         .then(res => {
+          console.log(res)
+         })
+         setEmployees(prevEmployees => {
+          return prevEmployees.filter(employee => employee.id !== id)
+         })
+  }
+
   // return (
   //   <EmployeesContext.Provider value={{
   //     employees, 
@@ -32,5 +43,5 @@ export const useEmployees = () => {
   //   }}>{children}</EmployeesContext.Provider>
   // )
 
-  return { employees, addEmployee }
+  return { employees, addEmployee, deleteEmployee }
 };
