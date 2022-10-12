@@ -5,26 +5,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { AddEmployeeModal } from './components/AddEmployeeModal';
 import { useEmployees } from './hooks/useEmployees'
 import { Employee } from './components/Employee';
+import { DeleteEmployeeModal } from './components/DeleteEmployeeModal';
 
 function App() {
 
-  const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false)
+  const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false);
+  const [showDeleteEmployeeModal, setShowDeleteEmployeeModal] = useState(false);
+  const [deleteEmployeeModalId, setDeleteEmployeeModalId] = useState();
 
   const { employees } = useEmployees();
 
-  // useEffect(() => { //get employee array and set employees
-  //   axios.get('/employees')
-  //        .then((res) => {
-  //         setEmployees(res.data)
-  //        })
-  // }, [])
+  const openDeleteEmployeeModal = (id) => {
+    setShowDeleteEmployeeModal(true)
+    setDeleteEmployeeModalId(id)
+  }
+
   
   const oneEmployee = employees.map(employee => {
     let assigned = ""
     if(employee.assigned) {
      assigned = "True"
-    }
-    else { 
+    } else { 
       assigned = "False"
     }
 
@@ -39,6 +40,7 @@ function App() {
         city={employee.city}
         branch={employee.branch}
         assigned={assigned}
+        onDeleteEmployeeClick={() => openDeleteEmployeeModal(employee.id)}
       />
     )
   })
@@ -77,6 +79,11 @@ function App() {
       <AddEmployeeModal
         show={showAddEmployeeModal}
         handleClose={() => setShowAddEmployeeModal(false)}
+      />
+
+      <DeleteEmployeeModal
+        show={showDeleteEmployeeModal}
+        handleClose={() => setShowDeleteEmployeeModal(false)}
       />
     </div>
   );

@@ -34,7 +34,7 @@ module.exports = (db) => {
   });
 
   //update employee information
-  router.put('update/:id', cors(corsOptions), (req, res) => {
+  router.put('/update/:id', cors(corsOptions), (req, res) => {
     const queryString = `
       UPDATE employees
       SET name = $1,
@@ -56,7 +56,7 @@ module.exports = (db) => {
   })
 
   //delete an employee
-  router.delete('delete/:id', cors(corsOptions), (req, res) => {
+  router.delete('/delete/:id', cors(corsOptions), (req, res) => {
     const queryString = `
       DELETE FROM employees
       WHERE id = $1
