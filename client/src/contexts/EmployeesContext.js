@@ -25,19 +25,21 @@ export const EmployeesProvider = ({ children }) => {
     axios.post('/employees', { name, code, profession, color, city, branch, assigned })
       .then(res => console.log(res))
       .then(() => {
-        axios.get('/employees')
-          .then((res) => {
-            setEmployees(res.data);
-          });
+        setEmployees(prevEmployees => {
+          return [...prevEmployees, { name, code, profession, color, city, branch, assigned }]
+        })
+        // axios.get('/employees')
+        //   .then((res) => {
+        //     setEmployees(res.data);
+        //   });
       });
   };
 
   function deleteEmployee(id) { //delete an employee
     axios.delete(`/employees/delete/${id}`)
       .then(() => {
-        axios.get('/employees')
-        .then((res) => {
-          setEmployees(res.data);
+        setEmployees(prevEmployees => {
+          return prevEmployees.filter(employee => employee.id !== id)
         })
       });
 
