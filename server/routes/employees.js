@@ -25,7 +25,7 @@ module.exports = (db) => {
       VALUES ($1, $2, $3, $4, $5, $6, $7)
       `
     
-    const queryParams = [req.body.name, req.body.code, req.body.profession, req.body.colour, req.body.city, req.body.branch, req.body.assigned]
+    const queryParams = [req.body.name, req.body.code, req.body.profession, req.body.color, req.body.city, req.body.branch, req.body.assigned]
 
     db.query(queryString, queryParams)
       .then(data => {
