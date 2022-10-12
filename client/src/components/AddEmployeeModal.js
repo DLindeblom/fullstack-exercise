@@ -1,6 +1,6 @@
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useRef } from 'react';
-import { useEmployees } from '../hooks/useEmployees';
+import { useEmployees } from '../contexts/EmployeesContext';
 
 
 export const AddEmployeeModal = ({ show, handleClose }) => {

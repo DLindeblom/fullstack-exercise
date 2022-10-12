@@ -1,5 +1,5 @@
 import { Modal, Button, Stack } from 'react-bootstrap';
-import { useEmployees } from '../hooks/useEmployees';
+import { useEmployees } from '../contexts/EmployeesContext';
 
 export const DeleteEmployeeModal = ({ show, handleClose, employeeId, employeeName }) => {
 
@@ -20,7 +20,7 @@ export const DeleteEmployeeModal = ({ show, handleClose, employeeId, employeeNam
       <Stack direction='horizontal' gap='2' className='d-flex justify-content-around mt-4 mb-3'>
         <Button 
           className="btn btn-danger"
-          onClick={() => deleteEmployee(employeeId)}
+          onClick={() => {deleteEmployee(employeeId); handleClose()}}
         >
           Delete
         </Button>

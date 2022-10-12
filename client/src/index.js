@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-// import { EmployeesProvider } from './context/EmployeeContext';
+import { EmployeesProvider } from './hooks/useEmployees';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <EmployeesProvider> */}
+    <EmployeesProvider>
       <App />
-    {/* </EmployeesProvider> */}
+    </EmployeesProvider>
   </React.StrictMode>
 );
 

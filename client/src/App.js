@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Container, Stack, Button, Table } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AddEmployeeModal } from './components/AddEmployeeModal';
 import { useEmployees } from './hooks/useEmployees'
 import { Employee } from './components/Employee';
-import { DeleteEmployeeModal } from './components/DeleteEmployeeModal';
 
 function App() {
 
   const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false);
-
 
   const { employees } = useEmployees();
 
