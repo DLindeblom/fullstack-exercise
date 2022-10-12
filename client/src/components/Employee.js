@@ -24,7 +24,6 @@ export const Employee = ({
   return (
     <>
       <tr key={id}>
-        <td>{id}</td>
         <td>{name}</td>
         <td>{code}</td>
         <td>{profession}</td>
