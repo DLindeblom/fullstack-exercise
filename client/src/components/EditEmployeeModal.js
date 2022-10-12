@@ -1,4 +1,4 @@
-import { Modal, Form, Button } from 'react-bootstrap';
+import { Modal, Form, Button, Stack } from 'react-bootstrap';
 import { useRef } from 'react';
 import { useEmployees } from '../contexts/EmployeesContext';
 
@@ -91,9 +91,15 @@ export const EditEmployeeModal = ({
             <option value="False">False</option>
           </Form.Select>
         </Form.Group>
-        <div className="d-flex justify-content-end">
+        <Stack direction="horizontal" gap="1" className="d-flex justify-content-end">
+        <div >
           <Button variant="primary" type="submit">Edit</Button>
         </div>
+        <div className="d-flex justify-content-end">
+          <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+        </div>
+
+        </Stack>
       </Modal.Body>
     </Form>
   </Modal>
