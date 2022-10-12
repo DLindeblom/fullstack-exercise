@@ -26,7 +26,7 @@ export const useEmployees = () => {
          .then(res => console.log(res))
   };
 
-  function deleteEmployee({ id }) {
+  function deleteEmployee(id) { //delete an employee
     axios.delete(`/employees/delete/${id}`)
          .then(res => {
           console.log(res)
