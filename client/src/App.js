@@ -3,41 +3,40 @@ import { Container, Stack, Button, Table } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AddEmployeeModal } from './components/AddEmployeeModal';
-import { useEmployees } from './contexts/EmployeesContext'
-import { Employee } from './components/Employee';
+import { EmployeeTable } from './components/EmployeeTable';
 
 function App() {
 
   const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false);
 
-  const { employees } = useEmployees();
+  // const { employees } = useEmployees();
 
-  //create an Employee component by looping through the employee array
+  // //create an Employee component by looping through the employee array
 
-  const oneEmployee = employees.map(employee => {
+  // const oneEmployee = employees.map(employee => {
 
-    //convert boolean from data, to string to be displayed in table
-    let assigned = ""
-    if(employee.assigned) {
-      assigned = "True"
-    } else { 
-      assigned = "False"
-    }
+  //   //convert boolean from data, to string to be displayed in table
+  //   let assigned = ""
+  //   if(employee.assigned) {
+  //     assigned = "True"
+  //   } else { 
+  //     assigned = "False"
+  //   }
 
-    return (
-      <Employee
-        key={employee.id}
-        id={employee.id}
-        name={employee.name} 
-        code={employee.code}
-        profession={employee.profession}
-        color={employee.color}
-        city={employee.city}
-        branch={employee.branch}
-        assigned={assigned}
-      />
-    )
-  })
+  //   return (
+  //     <Employee
+  //       key={employee.id}
+  //       id={employee.id}
+  //       name={employee.name} 
+  //       code={employee.code}
+  //       profession={employee.profession}
+  //       color={employee.color}
+  //       city={employee.city}
+  //       branch={employee.branch}
+  //       assigned={assigned}
+  //     />
+  //   )
+  // })
 
   return (
     <div className="vh-100" style={{"background": "linear-gradient(to right, #D7E1EC, #FFFFFF"}}>
@@ -47,7 +46,7 @@ function App() {
           <Button className="mt-5" onClick={() => setShowAddEmployeeModal(true)}>Add Employee</Button>
         </Stack>
         <Stack>
-          <Table bordered hover striped>
+          {/* <Table bordered hover striped>
             <thead>
               <tr>
                 <th>Name</th>
@@ -63,7 +62,8 @@ function App() {
             <tbody>
               {oneEmployee}
             </tbody>
-          </Table>
+          </Table> */}
+          <EmployeeTable/>
         </Stack>
       </Container>
 
