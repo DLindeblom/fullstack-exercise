@@ -15,12 +15,14 @@ function App() {
   //create an Employee component by looping through the employee array
 
   const oneEmployee = employees.map(employee => {
-    // let assigned = ""
-    // if(employee.assigned) {
-    //  assigned = "True"
-    // } else { 
-    //   assigned = "False"
-    // }
+
+    //convert boolean from data to string to be displayed in table
+    let assigned = ""
+    if(employee.assigned) {
+     assigned = "True"
+    } else { 
+      assigned = "False"
+    }
 
     return (
       <Employee
@@ -32,7 +34,7 @@ function App() {
         color={employee.color}
         city={employee.city}
         branch={employee.branch}
-        assigned={employee.assigned}
+        assigned={assigned}
       />
     )
   })
