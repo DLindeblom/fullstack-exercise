@@ -9,7 +9,7 @@ export function useEmployees() {
   return useContext(EmployeesContext);
 };
 
-// custom hook to handle all the functionality
+// Provider component
 export const EmployeesProvider = ({ children }) => {
 
   const [employees, setEmployees] = useState([]);
@@ -26,8 +26,8 @@ export const EmployeesProvider = ({ children }) => {
       .then(res => console.log(res))
       .then(() => {
         setEmployees(prevEmployees => {
-          return [...prevEmployees, { name, code, profession, color, city, branch, assigned }]
-        })
+          return [...prevEmployees, { name, code, profession, color, city, branch, assigned }];
+        });
       });
   };
 
@@ -38,32 +38,35 @@ export const EmployeesProvider = ({ children }) => {
       .then(() => {
         //filter out the employee from the employees array whos id matches the id of the employee being deleted from the database
         setEmployees(prevEmployees => {
-          return prevEmployees.filter(employee => employee.id !== id)
-        })
+          return prevEmployees.filter(employee => employee.id !== id);
+        });
       });
   }
 
   function updateEmployee({ id, name, code, profession, color, city, branch, assigned }) {
-    console.log(color)
-    axios.put(`/employees/update/${id}`, {id, name, code, profession, color, city, branch, assigned})
-    .then((res) => {
-      if(res.status === 200) {
-        //filter out the existing entry with the old data, and spread the rest of the array and add the edited employee information to the employee array
-        setEmployees(prevEmployees => {
-          return [...prevEmployees.filter(employee => employee.id !== id), {id, name, code, profession, color, city, branch, assigned}]
-        })
-      }
-    })
+    console.log(color);
+    axios.put(`/employees/update/${id}`, { id, name, code, profession, color, city, branch, assigned })
+      .then((res) => {
+        if (res.status === 200) {
+          // filter out the existing entry with the old data, and spread the rest of the array and add the edited employee information to the employee array
+          setEmployees(prevEmployees => {
+            return [...prevEmployees.filter(employee => employee.id !== id), { id, name, code, profession, color, city, branch, assigned }];
+          });
+        }
+      });
   }
+
+  //unintended side effect of this approach is the employee being edited is now placed at the end of the array.  Not sure if refetching the data to all the employee to remain in the same location on the table would be better?
+  
 
   return (
     <EmployeesContext.Provider value={{
-      employees, 
+      employees,
       addEmployee,
       deleteEmployee,
       updateEmployee
     }}>{children}</EmployeesContext.Provider>
-  )
+  );
 
   // return { employees, addEmployee, deleteEmployee };
 };
