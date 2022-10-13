@@ -23,7 +23,7 @@ export const Employee = ({
         <td>{name}</td>
         <td>{code}</td>
         <td>{profession}</td>
-        <td style={{ "backgroundColor": color }}></td>
+        <td style={{ "backgroundColor": color, "opacity": "0.7" }}></td>
         <td>{city}</td>
         <td>{branch}</td>
         <td>{assigned}</td>
