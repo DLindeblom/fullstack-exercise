@@ -25,7 +25,12 @@ export const DeleteEmployeeModal = ({ show, handleClose, employeeId, employeeNam
         >
           Delete
         </Button>
-        <Button className="btn btn-secondary" onClick={handleClose}>Cancel</Button>
+        <Button 
+          className="btn btn-secondary" 
+          onClick={handleClose}
+        >
+          Cancel
+        </Button>
       </Stack>
     </Modal>
   );
