@@ -16,10 +16,10 @@ function App() {
 
   const oneEmployee = employees.map(employee => {
 
-    //convert boolean from data to string to be displayed in table
+    //convert boolean from data, to string to be displayed in table
     let assigned = ""
     if(employee.assigned) {
-     assigned = "True"
+      assigned = "True"
     } else { 
       assigned = "False"
     }
@@ -40,7 +40,7 @@ function App() {
   })
 
   return (
-    <div>
+    <div className="vh-100" style={{"background": "linear-gradient(to right, #D7E1EC, #FFFFFF"}}>
       <Container >
         <Stack direction="horizontal" gap="2" className="mb-4">
           <h1 className="me-auto mt-5">Plexxis Employees</h1>
