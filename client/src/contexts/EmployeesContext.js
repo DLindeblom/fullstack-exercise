@@ -31,9 +31,10 @@ export const EmployeesProvider = ({ children }) => {
         if(res.status === 200) {
           setVariant("success")
           setAlertText("Employee successfully added!")
-          setEmployees(prevEmployees => {
-            return [...prevEmployees, { name, code, profession, color, city, branch, assigned }];
-          });
+          axios.get('/employees')
+            .then((res) => {
+              setEmployees(res.data)
+            })
         } 
       })
       .catch(() => {
