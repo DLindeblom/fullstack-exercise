@@ -97,5 +97,4 @@ export const EmployeesProvider = ({ children }) => {
     }}>{children}</EmployeesContext.Provider>
   );
 
-  // return { employees, addEmployee, deleteEmployee };
 };
