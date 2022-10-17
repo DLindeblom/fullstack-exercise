@@ -11,16 +11,6 @@ function App() {
   const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false);
   const { variant, alertText, setAlertText } = useEmployees();
 
-  console.log(variant, alertText)
-
-  // const handleShowAlert = (alert) => {
-  //   if (alert) {
-  //     setInterval(() => {
-  //       alert
-  //     }, 3000)
-  //   }
-  // }
-
   return (
     <div className="vh-100" style={{ "background": "linear-gradient(to right, #D7E1EC, #FFFFFF" }}>
       <Container >
